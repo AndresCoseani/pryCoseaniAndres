@@ -62,6 +62,7 @@
             Name = "frmFirma";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmFirma";
+            Load += frmFirma_Load;
             ((System.ComponentModel.ISupportInitialize)picFirma).EndInit();
             ResumeLayout(false);
         }

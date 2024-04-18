@@ -44,5 +44,10 @@ namespace ProyectoCoseaniAndres
                 picFirma.Image = ArchivoImagen;
             }
         }
+
+        private void frmFirma_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
