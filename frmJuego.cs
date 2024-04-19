@@ -13,16 +13,16 @@ namespace ProyectoCoseaniAndres
     public partial class frmJuego : Form
     {
         clsNave objNave;
-        clsNave objEnemigo;
-        clsNave objDisparo;
-        private System.Windows.Forms.Timer timer;
-        private bool Disparando = false;
-     
-
+        List<clsNave> listaEnemigos = new List<clsNave>();
+        List<PictureBox> listaDisparos = new List<PictureBox>();
+        bool espacioPresionado = false;
+        PictureBox picDisparos = new PictureBox();
+        int enemigosEliminados = 0;
+       
         public frmJuego()
         {
             InitializeComponent();
-            
+
         }
 
         private void frmJuego_Load(object sender, EventArgs e)
@@ -32,32 +32,57 @@ namespace ProyectoCoseaniAndres
             objNave.crearJugador();
             objNave.imgNave.Location = new Point(350, 400);
             Controls.Add(objNave.imgNave);
+            
+           Random aleatorioenemigo = new Random();
+           Random posicionX = new Random();
+           Random posicionY = new Random();
+            int contador = 0;
+            int posY = 0;
+            int posX= 0;
+            while (contador < 5)
+            {
+                clsNave objEnemigo = new clsNave();
+                objEnemigo.crearEnemigo();
 
-            objEnemigo = new clsNave();
-            objEnemigo.crearEnemigo1();
-            objEnemigo.imgNaveEnemiga1.Location = new Point(150, 100);
-            Controls.Add(objEnemigo.imgNaveEnemiga1);
+                int codigoenemigo = aleatorioenemigo.Next(3, 5);
+                posX = posicionX.Next(0, 300);
+                posY = posicionY.Next(0, 300);
 
-            objEnemigo = new clsNave();
-            objEnemigo.crearEnemigo2();
-            objEnemigo.imgNaveEnemiga2.Location = new Point(300, 100);
-            Controls.Add(objEnemigo.imgNaveEnemiga2);
+                switch (codigoenemigo)
+                {
+                    case 0:
+                        objEnemigo.imgNaveEnemiga1.Location = new Point(posX, posY);
+                        Controls.Add(objEnemigo.imgNaveEnemiga1);
+                        break;
+                    case 1:
+                        objEnemigo.imgNaveEnemiga2.Location = new Point(posX, posY);
+                        Controls.Add(objEnemigo.imgNaveEnemiga2);
+                        break;
+                    case 2:
+                        objEnemigo.imgNaveEnemiga3.Location = new Point(posX, posY);
+                        Controls.Add(objEnemigo.imgNaveEnemiga3);
+                        break;
+                    case 3:
+                        objEnemigo.imgNaveEnemiga4.Location = new Point(posX, posY);
+                        Controls.Add(objEnemigo.imgNaveEnemiga4);
+                        break;
+                    default:
+                        break;
+                }
 
-            objEnemigo = new clsNave();
-            objEnemigo.crearEnemigo3();
-            objEnemigo.imgNaveEnemiga3.Location = new Point(450, 100);
-            Controls.Add(objEnemigo.imgNaveEnemiga3);
+                listaEnemigos.Add(objEnemigo);
+                contador++;
+            }
 
-            objEnemigo = new clsNave();
-            objEnemigo.crearEnemigo4();
-            objEnemigo.imgNaveEnemiga4.Location = new Point(600, 100);
-            Controls.Add(objEnemigo.imgNaveEnemiga4);
-
+            lblScore.Text = "Score:" + enemigosEliminados.ToString();
         }
 
+
+
+        
         private void frmJuego_KeyDown(object sender, KeyEventArgs e)
         {
-            //problar de hacer 2 picture box como hizo el profe y despues vere como se hace para que salga desde la nave
+            
 
             if (e.KeyCode == Keys.Right)
             {
@@ -69,73 +94,87 @@ namespace ProyectoCoseaniAndres
                 objNave.imgNave.Location = new Point(objNave.imgNave.Location.X - 5,
                  objNave.imgNave.Location.Y);
             }
+            if (e.KeyCode == Keys.Space && !espacioPresionado)
+            {
+                espacioPresionado = true;
+
+                // Crear un nuevo PictureBox para representar el disparo
+                PictureBox picDisparo = new PictureBox();
+                picDisparo.BackColor = Color.White;
+                picDisparo.Size = new Size(5, 15);
+                picDisparo.Location = new Point(objNave.imgNave.Location.X + objNave.imgNave.Width / 2 - picDisparo.Width / 2,
+                                                objNave.imgNave.Location.Y);
+                Controls.Add(picDisparo);
+                listaDisparos.Add(picDisparo); // Agregar el PictureBox del disparo a la lista de disparos
+                timer1.Start();
+            }
+
+        }
+    
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            foreach (PictureBox picDisparo in listaDisparos.ToList())
+            {
+                if (picDisparo.Location.Y > 0)
+                {
+                    foreach (clsNave enemigo in listaEnemigos.ToList())
+                    {
+                        if (enemigo.imgNaveEnemiga1 != null && picDisparo.Bounds.IntersectsWith(enemigo.imgNaveEnemiga1.Bounds))
+                        {
+                            picDisparo.Dispose();
+                            enemigo.imgNaveEnemiga1.Dispose();
+                            listaDisparos.Remove(picDisparo);
+                            listaEnemigos.Remove(enemigo);
+                            enemigosEliminados++;
+                            break;
+                        }
+                        else if (enemigo.imgNaveEnemiga2 != null && picDisparo.Bounds.IntersectsWith(enemigo.imgNaveEnemiga2.Bounds))
+                        {
+                            picDisparo.Dispose();
+                            enemigo.imgNaveEnemiga2.Dispose();
+                            listaDisparos.Remove(picDisparo);
+                            listaEnemigos.Remove(enemigo);
+                            enemigosEliminados++;
+                            break;
+                        }
+                        else if (enemigo.imgNaveEnemiga3 != null && picDisparo.Bounds.IntersectsWith(enemigo.imgNaveEnemiga3.Bounds))
+                        {
+                            picDisparo.Dispose();
+                            enemigo.imgNaveEnemiga3.Dispose();
+                            listaDisparos.Remove(picDisparo);
+                            listaEnemigos.Remove(enemigo);
+                            enemigosEliminados++;
+                            break;
+                        }
+                        else if (enemigo.imgNaveEnemiga4 != null && picDisparo.Bounds.IntersectsWith(enemigo.imgNaveEnemiga4.Bounds))
+                        {
+                            picDisparo.Dispose();
+                            enemigo.imgNaveEnemiga4.Dispose();
+                            listaDisparos.Remove(picDisparo);
+                            listaEnemigos.Remove(enemigo);
+                            enemigosEliminados++;
+                            break;
+                        }
+                    }
+                    picDisparo.Location = new Point(picDisparo.Location.X, picDisparo.Location.Y - 5);
+                    lblScore.Text = "Score:" + enemigosEliminados.ToString();
+                }
+                else
+                {
+                    picDisparo.Dispose();
+                    listaDisparos.Remove(picDisparo);
+                }
+            }
+
+        }
+    
+        private void frmJuego_KeyUp(object sender, KeyEventArgs e)
+        {
             if (e.KeyCode == Keys.Space)
             {
-                // Crear el disparo
-                PictureBox disparo = new PictureBox();
-                disparo.BackColor = Color.Yellow;
-                disparo.Size = new Size(5, 15);
-                disparo.Location = new Point(objNave.imgNave.Left + objNave.imgNave.Width / 2 - disparo.Width / 2,
-                                             objNave.imgNave.Top - disparo.Height);
-                Controls.Add(disparo);
-
-                // Mover el disparo hacia arriba
-                timer.Interval = 20;
-                timer.Tick += (s, _) =>
-                {
-                    disparo.Top -= 5;
-
-                    // Verificar si el disparo ha salido de la pantalla
-                    if (disparo.Top < 0)
-                    {
-                        // Remover el disparo
-                        Controls.Remove(disparo);
-                        timer.Stop();
-                        disparo.Dispose();
-                    }
-                };
-                timer.Start();
-
+                espacioPresionado = false; // Marca la tecla de espacio como no presionada
             }
         }
-
-        private void disparoTimer_Tick(object sender, EventArgs e)
-        {
-            //    if (Disparando)
-            //    {
-            //        Disparo();
-            //    }
-        }
-        //private void Disparar()
-        //{
-        //    // Crear un nuevo PictureBox para representar el disparo
-        //    objDisparo.Disparo = new PictureBox();
-        //    objDisparo.Disparo.BackColor = Color.Yellow; // Puedes cambiar el color del disparo
-        //    objDisparo.Disparo.Size = new Size(5, 15);
-        //    objDisparo.Disparo.Location = new Point(objDisparo.imgDisparo.Left + objDisparo.imgDisparo.Width / 2 - objDisparo.Disparo.Width / 2,
-        //                                          objDisparo.imgDisparo.Top - objDisparo.Disparo.Height);
-        //    Controls.Add(objDisparo.Disparo);
-        //    timer.Start();
-        //}
-        //private void Disparo()
-        //{
-        //    // Mover el disparo hacia arriba
-        //    objDisparo.Disparo.Top -= 5;
-
-        //    // Verificar si el disparo ha salido de la pantalla
-        //    if (objDisparo.Disparo.Top < 0)
-        //    {
-        //        // Remover el disparo
-        //        Controls.Remove(objDisparo.Disparo);
-        //        objDisparo.Disparo.Dispose();
-        //        Disparando = false; // Permitir al jugador disparar nuevamente
-
-        //    }
-        //    if (objDisparo.imgDisparo.Bounds.IntersectsWith(objDisparo.imgNaveEnemiga1.Bounds) || objDisparo.imgDisparo.Bounds.IntersectsWith( objDisparo.imgNaveEnemiga2.Bounds) || objDisparo.imgDisparo.Bounds.IntersectsWith(objDisparo.imgNaveEnemiga3.Bounds) || objDisparo.imgDisparo.Bounds.IntersectsWith(objDisparo.imgNaveEnemiga4.Bounds))
-        //    {
-
-        //    }
-
-        //}
     }
 }
+

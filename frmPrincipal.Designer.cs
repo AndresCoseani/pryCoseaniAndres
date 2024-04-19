@@ -280,7 +280,7 @@
             // juegoToolStripMenuItem
             // 
             juegoToolStripMenuItem.Name = "juegoToolStripMenuItem";
-            juegoToolStripMenuItem.Size = new Size(180, 22);
+            juegoToolStripMenuItem.Size = new Size(105, 22);
             juegoToolStripMenuItem.Text = "Juego";
             juegoToolStripMenuItem.Click += juegoToolStripMenuItem_Click;
             // 
@@ -292,6 +292,7 @@
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "frmPrincipal";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmPrincipal";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

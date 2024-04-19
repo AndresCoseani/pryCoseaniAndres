@@ -29,12 +29,24 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-           
+            timer1 = new System.Windows.Forms.Timer(components);
+            lblScore = new Label();
             SuspendLayout();
             // 
-            // disparoTimer
+            // timer1
             // 
-            
+            timer1.Tick += timer1_Tick;
+            // 
+            // lblScore
+            // 
+            lblScore.AutoSize = true;
+            lblScore.BackColor = SystemColors.ActiveCaptionText;
+            lblScore.ForeColor = SystemColors.ButtonFace;
+            lblScore.Location = new Point(12, 10);
+            lblScore.Name = "lblScore";
+            lblScore.Size = new Size(39, 15);
+            lblScore.TabIndex = 0;
+            lblScore.Text = "Score:";
             // 
             // frmJuego
             // 
@@ -42,17 +54,22 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(800, 500);
+            Controls.Add(lblScore);
+            ForeColor = SystemColors.ButtonHighlight;
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmJuego";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmJuego";
             Load += frmJuego_Load;
             KeyDown += frmJuego_KeyDown;
+            KeyUp += frmJuego_KeyUp;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        
+        private System.Windows.Forms.Timer timer1;
+        private Label lblScore;
     }
 }
