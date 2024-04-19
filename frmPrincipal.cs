@@ -6,5 +6,11 @@ namespace ProyectoCoseaniAndres
         {
             InitializeComponent();
         }
+
+        private void juegoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmJuego J = new frmJuego();
+            J.ShowDialog();
+        }
     }
 }

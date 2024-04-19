@@ -60,6 +60,7 @@
             toolStripSeparator5 = new ToolStripSeparator();
             acercadeToolStripMenuItem = new ToolStripMenuItem();
             accederToolStripMenuItem = new ToolStripMenuItem();
+            juegoToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -85,7 +86,7 @@
             nuevoToolStripMenuItem.ImageTransparentColor = Color.Magenta;
             nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
             nuevoToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.N;
-            nuevoToolStripMenuItem.Size = new Size(32, 19);
+            nuevoToolStripMenuItem.Size = new Size(206, 22);
             nuevoToolStripMenuItem.Text = "&Nuevo";
             // 
             // abrirToolStripMenuItem
@@ -94,13 +95,13 @@
             abrirToolStripMenuItem.ImageTransparentColor = Color.Magenta;
             abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
             abrirToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.O;
-            abrirToolStripMenuItem.Size = new Size(32, 19);
+            abrirToolStripMenuItem.Size = new Size(206, 22);
             abrirToolStripMenuItem.Text = "&Abrir";
             // 
             // toolStripSeparator
             // 
             toolStripSeparator.Name = "toolStripSeparator";
-            toolStripSeparator.Size = new Size(6, 6);
+            toolStripSeparator.Size = new Size(203, 6);
             // 
             // guardarToolStripMenuItem
             // 
@@ -108,19 +109,19 @@
             guardarToolStripMenuItem.ImageTransparentColor = Color.Magenta;
             guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
             guardarToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.S;
-            guardarToolStripMenuItem.Size = new Size(32, 19);
+            guardarToolStripMenuItem.Size = new Size(206, 22);
             guardarToolStripMenuItem.Text = "&Guardar";
             // 
             // guardarcomoToolStripMenuItem
             // 
             guardarcomoToolStripMenuItem.Name = "guardarcomoToolStripMenuItem";
-            guardarcomoToolStripMenuItem.Size = new Size(32, 19);
+            guardarcomoToolStripMenuItem.Size = new Size(206, 22);
             guardarcomoToolStripMenuItem.Text = "Guardar &como";
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(6, 6);
+            toolStripSeparator1.Size = new Size(203, 6);
             // 
             // imprimirToolStripMenuItem
             // 
@@ -128,7 +129,7 @@
             imprimirToolStripMenuItem.ImageTransparentColor = Color.Magenta;
             imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
             imprimirToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.P;
-            imprimirToolStripMenuItem.Size = new Size(32, 19);
+            imprimirToolStripMenuItem.Size = new Size(206, 22);
             imprimirToolStripMenuItem.Text = "&Imprimir";
             // 
             // vistapreviadeimpresiónToolStripMenuItem
@@ -136,18 +137,18 @@
             vistapreviadeimpresiónToolStripMenuItem.Image = (Image)resources.GetObject("vistapreviadeimpresiónToolStripMenuItem.Image");
             vistapreviadeimpresiónToolStripMenuItem.ImageTransparentColor = Color.Magenta;
             vistapreviadeimpresiónToolStripMenuItem.Name = "vistapreviadeimpresiónToolStripMenuItem";
-            vistapreviadeimpresiónToolStripMenuItem.Size = new Size(32, 19);
+            vistapreviadeimpresiónToolStripMenuItem.Size = new Size(206, 22);
             vistapreviadeimpresiónToolStripMenuItem.Text = "&Vista previa de impresión";
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(6, 6);
+            toolStripSeparator2.Size = new Size(203, 6);
             // 
             // salirToolStripMenuItem
             // 
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            salirToolStripMenuItem.Size = new Size(32, 19);
+            salirToolStripMenuItem.Size = new Size(206, 22);
             salirToolStripMenuItem.Text = "&Salir";
             // 
             // editarToolStripMenuItem
@@ -161,20 +162,20 @@
             // 
             deshacerToolStripMenuItem.Name = "deshacerToolStripMenuItem";
             deshacerToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Z;
-            deshacerToolStripMenuItem.Size = new Size(32, 19);
+            deshacerToolStripMenuItem.Size = new Size(163, 22);
             deshacerToolStripMenuItem.Text = "&Deshacer";
             // 
             // rehacerToolStripMenuItem
             // 
             rehacerToolStripMenuItem.Name = "rehacerToolStripMenuItem";
             rehacerToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Y;
-            rehacerToolStripMenuItem.Size = new Size(32, 19);
+            rehacerToolStripMenuItem.Size = new Size(163, 22);
             rehacerToolStripMenuItem.Text = "&Rehacer";
             // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(6, 6);
+            toolStripSeparator3.Size = new Size(160, 6);
             // 
             // cortarToolStripMenuItem
             // 
@@ -182,7 +183,7 @@
             cortarToolStripMenuItem.ImageTransparentColor = Color.Magenta;
             cortarToolStripMenuItem.Name = "cortarToolStripMenuItem";
             cortarToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.X;
-            cortarToolStripMenuItem.Size = new Size(32, 19);
+            cortarToolStripMenuItem.Size = new Size(163, 22);
             cortarToolStripMenuItem.Text = "&Cortar";
             // 
             // copiarToolStripMenuItem
@@ -191,7 +192,7 @@
             copiarToolStripMenuItem.ImageTransparentColor = Color.Magenta;
             copiarToolStripMenuItem.Name = "copiarToolStripMenuItem";
             copiarToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.C;
-            copiarToolStripMenuItem.Size = new Size(32, 19);
+            copiarToolStripMenuItem.Size = new Size(163, 22);
             copiarToolStripMenuItem.Text = "&Copiar";
             // 
             // pegarToolStripMenuItem
@@ -200,18 +201,18 @@
             pegarToolStripMenuItem.ImageTransparentColor = Color.Magenta;
             pegarToolStripMenuItem.Name = "pegarToolStripMenuItem";
             pegarToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.V;
-            pegarToolStripMenuItem.Size = new Size(32, 19);
+            pegarToolStripMenuItem.Size = new Size(163, 22);
             pegarToolStripMenuItem.Text = "&Pegar";
             // 
             // toolStripSeparator4
             // 
             toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(6, 6);
+            toolStripSeparator4.Size = new Size(160, 6);
             // 
             // seleccionartodoToolStripMenuItem
             // 
             seleccionartodoToolStripMenuItem.Name = "seleccionartodoToolStripMenuItem";
-            seleccionartodoToolStripMenuItem.Size = new Size(32, 19);
+            seleccionartodoToolStripMenuItem.Size = new Size(163, 22);
             seleccionartodoToolStripMenuItem.Text = "&Seleccionar todo";
             // 
             // herramientasToolStripMenuItem
@@ -224,13 +225,13 @@
             // personalizarToolStripMenuItem
             // 
             personalizarToolStripMenuItem.Name = "personalizarToolStripMenuItem";
-            personalizarToolStripMenuItem.Size = new Size(32, 19);
+            personalizarToolStripMenuItem.Size = new Size(137, 22);
             personalizarToolStripMenuItem.Text = "&Personalizar";
             // 
             // opcionesToolStripMenuItem
             // 
             opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
-            opcionesToolStripMenuItem.Size = new Size(32, 19);
+            opcionesToolStripMenuItem.Size = new Size(137, 22);
             opcionesToolStripMenuItem.Text = "&Opciones";
             // 
             // ayudaToolStripMenuItem
@@ -243,37 +244,45 @@
             // contenidoToolStripMenuItem
             // 
             contenidoToolStripMenuItem.Name = "contenidoToolStripMenuItem";
-            contenidoToolStripMenuItem.Size = new Size(32, 19);
+            contenidoToolStripMenuItem.Size = new Size(135, 22);
             contenidoToolStripMenuItem.Text = "&Contenido";
             // 
             // índiceToolStripMenuItem
             // 
             índiceToolStripMenuItem.Name = "índiceToolStripMenuItem";
-            índiceToolStripMenuItem.Size = new Size(32, 19);
+            índiceToolStripMenuItem.Size = new Size(135, 22);
             índiceToolStripMenuItem.Text = "Índ&ice";
             // 
             // buscarToolStripMenuItem
             // 
             buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
-            buscarToolStripMenuItem.Size = new Size(32, 19);
+            buscarToolStripMenuItem.Size = new Size(135, 22);
             buscarToolStripMenuItem.Text = "&Buscar";
             // 
             // toolStripSeparator5
             // 
             toolStripSeparator5.Name = "toolStripSeparator5";
-            toolStripSeparator5.Size = new Size(6, 6);
+            toolStripSeparator5.Size = new Size(132, 6);
             // 
             // acercadeToolStripMenuItem
             // 
             acercadeToolStripMenuItem.Name = "acercadeToolStripMenuItem";
-            acercadeToolStripMenuItem.Size = new Size(32, 19);
+            acercadeToolStripMenuItem.Size = new Size(135, 22);
             acercadeToolStripMenuItem.Text = "&Acerca de...";
             // 
             // accederToolStripMenuItem
             // 
+            accederToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { juegoToolStripMenuItem });
             accederToolStripMenuItem.Name = "accederToolStripMenuItem";
             accederToolStripMenuItem.Size = new Size(62, 20);
             accederToolStripMenuItem.Text = "Acceder";
+            // 
+            // juegoToolStripMenuItem
+            // 
+            juegoToolStripMenuItem.Name = "juegoToolStripMenuItem";
+            juegoToolStripMenuItem.Size = new Size(180, 22);
+            juegoToolStripMenuItem.Text = "Juego";
+            juegoToolStripMenuItem.Click += juegoToolStripMenuItem_Click;
             // 
             // frmPrincipal
             // 
@@ -323,5 +332,6 @@
         private ToolStripSeparator toolStripSeparator5;
         private ToolStripMenuItem acercadeToolStripMenuItem;
         private ToolStripMenuItem accederToolStripMenuItem;
+        private ToolStripMenuItem juegoToolStripMenuItem;
     }
 }
