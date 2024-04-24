@@ -18,72 +18,25 @@ namespace ProyectoCoseaniAndres
         bool espacioPresionado = false;
         PictureBox picDisparos = new PictureBox();
         int enemigosEliminados = 0;
-       
+
         public frmJuego()
         {
             InitializeComponent();
+
 
         }
 
         private void frmJuego_Load(object sender, EventArgs e)
         {
-
             objNave = new clsNave();
             objNave.crearJugador();
             objNave.imgNave.Location = new Point(350, 400);
             Controls.Add(objNave.imgNave);
-            
-           Random aleatorioenemigo = new Random();
-           Random posicionX = new Random();
-           Random posicionY = new Random();
-            int contador = 0;
-            int posY = 0;
-            int posX= 0;
-            while (contador < 5)
-            {
-                clsNave objEnemigo = new clsNave();
-                objEnemigo.crearEnemigo();
-
-                int codigoenemigo = aleatorioenemigo.Next(3, 5);
-                posX = posicionX.Next(0, 300);
-                posY = posicionY.Next(0, 300);
-
-                switch (codigoenemigo)
-                {
-                    case 0:
-                        objEnemigo.imgNaveEnemiga1.Location = new Point(posX, posY);
-                        Controls.Add(objEnemigo.imgNaveEnemiga1);
-                        break;
-                    case 1:
-                        objEnemigo.imgNaveEnemiga2.Location = new Point(posX, posY);
-                        Controls.Add(objEnemigo.imgNaveEnemiga2);
-                        break;
-                    case 2:
-                        objEnemigo.imgNaveEnemiga3.Location = new Point(posX, posY);
-                        Controls.Add(objEnemigo.imgNaveEnemiga3);
-                        break;
-                    case 3:
-                        objEnemigo.imgNaveEnemiga4.Location = new Point(posX, posY);
-                        Controls.Add(objEnemigo.imgNaveEnemiga4);
-                        break;
-                    default:
-                        break;
-                }
-
-                listaEnemigos.Add(objEnemigo);
-                contador++;
-            }
-
             lblScore.Text = "Score:" + enemigosEliminados.ToString();
         }
 
-
-
-        
         private void frmJuego_KeyDown(object sender, KeyEventArgs e)
         {
-            
-
             if (e.KeyCode == Keys.Right)
             {
                 objNave.imgNave.Location = new Point(objNave.imgNave.Location.X + 5,
@@ -107,11 +60,76 @@ namespace ProyectoCoseaniAndres
                 Controls.Add(picDisparo);
                 listaDisparos.Add(picDisparo); // Agregar el PictureBox del disparo a la lista de disparos
                 timer1.Start();
+                timer2.Start();
             }
 
         }
-    
+
         private void timer1_Tick(object sender, EventArgs e)
+        {
+            Random aleatorioenemigo = new Random();
+            Random posicionX = new Random();
+            Random posicionY = new Random();
+            int contador = 0;
+            int posY = 0;
+            int posX = 0;
+            while (contador < 1)
+            {
+                clsNave objEnemigo = new clsNave();
+
+                posX = posicionX.Next(0, 800);
+                posY = posicionY.Next(0, 300);
+                
+                int codigoenemigo = aleatorioenemigo.Next(1000, 3000);
+                switch (codigoenemigo)
+                {
+                    case < 2000:
+                        objEnemigo.crearEnemigo();
+                        objEnemigo.imgNaveEnemiga1.Location = new Point(posX, posY);
+                        Controls.Add(objEnemigo.imgNaveEnemiga1);
+                        objEnemigo.imgNaveEnemiga1.Tag = "enemigo";
+                        break;
+                    case > 2500:
+                        objEnemigo.crearEnemigo();
+                        objEnemigo.imgNaveEnemiga2.Location = new Point(posX, posY);
+                        Controls.Add(objEnemigo.imgNaveEnemiga2);
+                        objEnemigo.imgNaveEnemiga2.Tag = "enemigo";
+                        break;
+                    case > 1000:
+                        objEnemigo.crearEnemigo();
+                        objEnemigo.imgNaveEnemiga3.Location = new Point(posX, posY);
+                        Controls.Add(objEnemigo.imgNaveEnemiga3);
+                        objEnemigo.imgNaveEnemiga3.Tag = "enemigo";
+                        break;
+
+                    default:
+                        break;
+                }
+
+                    listaEnemigos.Add(objEnemigo);
+                    contador++;
+                
+            }
+
+        }
+
+        private void frmJuego_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Space)
+            {
+                espacioPresionado = false; // Marca la tecla de espacio como no presionada
+                label1.Enabled = false;
+                timer1.Stop();
+               
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
         {
             foreach (PictureBox picDisparo in listaDisparos.ToList())
             {
@@ -146,15 +164,7 @@ namespace ProyectoCoseaniAndres
                             enemigosEliminados++;
                             break;
                         }
-                        else if (enemigo.imgNaveEnemiga4 != null && picDisparo.Bounds.IntersectsWith(enemigo.imgNaveEnemiga4.Bounds))
-                        {
-                            picDisparo.Dispose();
-                            enemigo.imgNaveEnemiga4.Dispose();
-                            listaDisparos.Remove(picDisparo);
-                            listaEnemigos.Remove(enemigo);
-                            enemigosEliminados++;
-                            break;
-                        }
+
                     }
                     picDisparo.Location = new Point(picDisparo.Location.X, picDisparo.Location.Y - 5);
                     lblScore.Text = "Score:" + enemigosEliminados.ToString();
@@ -166,14 +176,6 @@ namespace ProyectoCoseaniAndres
                 }
             }
 
-        }
-    
-        private void frmJuego_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Space)
-            {
-                espacioPresionado = false; // Marca la tecla de espacio como no presionada
-            }
         }
     }
 }

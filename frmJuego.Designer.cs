@@ -31,6 +31,8 @@
             components = new System.ComponentModel.Container();
             timer1 = new System.Windows.Forms.Timer(components);
             lblScore = new Label();
+            label1 = new Label();
+            timer2 = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // timer1
@@ -48,12 +50,34 @@
             lblScore.TabIndex = 0;
             lblScore.Text = "Score:";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = SystemColors.ActiveCaptionText;
+            label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ActiveCaption;
+            label1.ImageAlign = ContentAlignment.TopCenter;
+            label1.Location = new Point(196, 241);
+            label1.Name = "label1";
+            label1.Size = new Size(380, 37);
+            label1.TabIndex = 1;
+            label1.Text = "Pulse \"espacio\" para comenzar";
+            label1.TextAlign = ContentAlignment.TopCenter;
+            label1.Click += label1_Click;
+            // 
+            // timer2
+            // 
+            timer2.Enabled = true;
+            timer2.Interval = 20;
+            timer2.Tick += timer2_Tick;
+            // 
             // frmJuego
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(800, 500);
+            Controls.Add(label1);
             Controls.Add(lblScore);
             ForeColor = SystemColors.ButtonHighlight;
             FormBorderStyle = FormBorderStyle.None;
@@ -71,5 +95,7 @@
 
         private System.Windows.Forms.Timer timer1;
         private Label lblScore;
+        private Label label1;
+        private System.Windows.Forms.Timer timer2;
     }
 }

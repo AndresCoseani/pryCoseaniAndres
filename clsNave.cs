@@ -17,7 +17,6 @@ namespace ProyectoCoseaniAndres
         public PictureBox imgNaveEnemiga1;
         public PictureBox imgNaveEnemiga2;
         public PictureBox imgNaveEnemiga3;
-        public PictureBox imgNaveEnemiga4;
         public PictureBox imgDisparo;
         public PictureBox Disparo;
        
@@ -53,14 +52,6 @@ namespace ProyectoCoseaniAndres
             imgNaveEnemiga3 = new PictureBox();
             imgNaveEnemiga3.SizeMode = PictureBoxSizeMode.StretchImage;
             imgNaveEnemiga3.ImageLocation = "https://www.laps4.com/foro/trofeos/psntrofeos/124309.PNG";
-
-
-            vida = 100;
-            nombre = "Nave Enemiga 4";
-            puntosDaño = 60;
-            imgNaveEnemiga4 = new PictureBox();
-            imgNaveEnemiga4.SizeMode = PictureBoxSizeMode.StretchImage;
-            imgNaveEnemiga4.ImageLocation = "https://pixelreal.net/wp-content/uploads/Galaga-enemigo-arana-patrones-hama-beads.png";
 
         }
     }
