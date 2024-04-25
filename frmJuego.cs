@@ -22,17 +22,19 @@ namespace ProyectoCoseaniAndres
         public frmJuego()
         {
             InitializeComponent();
-
+            
 
         }
 
         private void frmJuego_Load(object sender, EventArgs e)
         {
+            
             objNave = new clsNave();
             objNave.crearJugador();
             objNave.imgNave.Location = new Point(350, 400);
             Controls.Add(objNave.imgNave);
             lblScore.Text = "Score:" + enemigosEliminados.ToString();
+            
         }
 
         private void frmJuego_KeyDown(object sender, KeyEventArgs e)
@@ -59,27 +61,37 @@ namespace ProyectoCoseaniAndres
                                                 objNave.imgNave.Location.Y);
                 Controls.Add(picDisparo);
                 listaDisparos.Add(picDisparo); // Agregar el PictureBox del disparo a la lista de disparos
-                timer1.Start();
-                timer2.Start();
+                timer1.Start(); timer2.Start();
             }
 
         }
-
+        // Declarar una variable para contar las naves enemigas en pantalla
+        private int cantidadNavesEnemigasEnPantalla = 0;
+        // Declarar una constante para el límite máximo de naves enemigas en pantalla
+        private const int limiteNavesEnemigas = 200;
         private void timer1_Tick(object sender, EventArgs e)
         {
             Random aleatorioenemigo = new Random();
-            Random posicionX = new Random();
-            Random posicionY = new Random();
             int contador = 0;
-            int posY = 0;
-            int posX = 0;
-            while (contador < 1)
+            while (contador < 2 && cantidadNavesEnemigasEnPantalla < limiteNavesEnemigas)
             {
                 clsNave objEnemigo = new clsNave();
 
-                posX = posicionX.Next(0, 800);
-                posY = posicionY.Next(0, 300);
-                
+                int posX = aleatorioenemigo.Next(0, 800);
+                int posY = aleatorioenemigo.Next(0, 300);
+                // Verificar si las coordenadas están demasiado cerca de las naves existentes
+                bool demasiadoCerca = listaEnemigos.Any(enemigo =>
+                    Math.Abs(posX - enemigo.imgNaveEnemiga1.Location.X) < 100 &&
+                    Math.Abs(posY - enemigo.imgNaveEnemiga1.Location.Y) < 100 ||
+                    Math.Abs(posX - enemigo.imgNaveEnemiga2.Location.X) < 100 &&
+                    Math.Abs(posY - enemigo.imgNaveEnemiga2.Location.Y) < 100||
+                    Math.Abs(posX - enemigo.imgNaveEnemiga3.Location.X) < 100 &&
+                    Math.Abs(posY - enemigo.imgNaveEnemiga3.Location.Y) < 100);
+
+                // Si las coordenadas están demasiado cerca, generar nuevas coordenadas
+                if (demasiadoCerca)
+                    continue;
+
                 int codigoenemigo = aleatorioenemigo.Next(1000, 3000);
                 switch (codigoenemigo)
                 {
@@ -106,11 +118,11 @@ namespace ProyectoCoseaniAndres
                         break;
                 }
 
-                    listaEnemigos.Add(objEnemigo);
-                    contador++;
-                
+                listaEnemigos.Add(objEnemigo);
+                cantidadNavesEnemigasEnPantalla++;
+                contador++;
             }
-
+            timer1.Stop();
         }
 
         private void frmJuego_KeyUp(object sender, KeyEventArgs e)
@@ -118,8 +130,8 @@ namespace ProyectoCoseaniAndres
             if (e.KeyCode == Keys.Space)
             {
                 espacioPresionado = false; // Marca la tecla de espacio como no presionada
-                label1.Enabled = false;
-                timer1.Stop();
+                label1.Visible = false;
+               
                
             }
         }
@@ -131,6 +143,7 @@ namespace ProyectoCoseaniAndres
 
         private void timer2_Tick(object sender, EventArgs e)
         {
+           
             foreach (PictureBox picDisparo in listaDisparos.ToList())
             {
                 if (picDisparo.Location.Y > 0)
@@ -173,6 +186,11 @@ namespace ProyectoCoseaniAndres
                 {
                     picDisparo.Dispose();
                     listaDisparos.Remove(picDisparo);
+                }
+                if (listaEnemigos == null)
+                {
+                    MessageBox.Show("Ganaste!", "De Acuerdo");
+                    this.Close();
                 }
             }
 

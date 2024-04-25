@@ -44,7 +44,7 @@ namespace ProyectoCoseaniAndres
             puntosDaño = 40;
             imgNaveEnemiga2 = new PictureBox();
             imgNaveEnemiga2.SizeMode = PictureBoxSizeMode.StretchImage;
-            imgNaveEnemiga2.ImageLocation = "https://w7.pngwing.com/pngs/191/849/png-transparent-galaga-88-super-mario-bros-the-elder-scrolls-online-xbox-360-stitch-miscellaneous-super-mario-bros-text.png";
+            imgNaveEnemiga2.ImageLocation = "https://www.laps4.com/foro/trofeos/psntrofeos/124309.PNG";
 
             vida = 100;
             nombre = "Nave Enemiga 3";
