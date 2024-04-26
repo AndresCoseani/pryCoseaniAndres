@@ -55,10 +55,10 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = SystemColors.ActiveCaptionText;
-            label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Segoe UI", 20F);
             label1.ForeColor = SystemColors.ActiveCaption;
             label1.ImageAlign = ContentAlignment.TopCenter;
-            label1.Location = new Point(196, 241);
+            label1.Location = new Point(196, 212);
             label1.Name = "label1";
             label1.Size = new Size(380, 37);
             label1.TabIndex = 1;

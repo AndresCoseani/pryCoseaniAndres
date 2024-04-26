@@ -69,6 +69,10 @@ namespace ProyectoCoseaniAndres
         private int cantidadNavesEnemigasEnPantalla = 0;
         // Declarar una constante para el límite máximo de naves enemigas en pantalla
         private const int limiteNavesEnemigas = 200;
+        private void GenerarEnemigos()
+        { 
+            
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
             Random aleatorioenemigo = new Random();
