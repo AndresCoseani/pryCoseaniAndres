@@ -54,7 +54,7 @@ namespace ProyectoCoseaniAndres
             {
                 espacioPresionado = true;
 
-                // Crear un nuevo PictureBox para el disparo
+                // Crea un nuevo PictureBox para el disparo
                 PictureBox picDisparo = new PictureBox();
                 picDisparo.BackColor = Color.White;
                 picDisparo.Size = new Size(5, 15);
@@ -80,7 +80,7 @@ namespace ProyectoCoseaniAndres
 
                 int posX = aleatorioenemigo.Next(0, 800);
                 int posY = aleatorioenemigo.Next(0, 300);
-                // Verificar si las coordenadas están demasiado cerca de las naves existentes
+                // bool para saber si las coordenadas están demasiado cerca de las naves existentes
                 bool demasiadoCerca = Controls.OfType<PictureBox>().Any(enemigo =>
                     enemigo.Tag == "enemigo" &&
                     Math.Abs(posX - enemigo.Location.X) < 100 &&
@@ -121,7 +121,7 @@ namespace ProyectoCoseaniAndres
                 }
 
                 listaEnemigos.Add(objEnemigo);
-                cantidadNavesEnemigasEnPantalla++;
+                cantidadNavesEnemigasEnPantalla++;//aumenta los contadores
                 contador++;
             }
         }
