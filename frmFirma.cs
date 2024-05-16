@@ -24,8 +24,12 @@ namespace ProyectoCoseaniAndres
 
             DateTime fechaHoraActual = DateTime.Now;
             string nombreArchivo = $"Firma_{fechaHoraActual:yyyy.MM.dd},{fechaHoraActual:HH.mm}hrs.jpg";
-            string carpetaFirma = @"C:\Users\andyc\source\repos\pryCoseaniAndresI\bin\Debug\net6.0-windows\FIRMAS";
+            string carpetaFirma = Path.Combine(Application.StartupPath, "Firmas");
             string rutaFirma = Path.Combine(carpetaFirma, nombreArchivo);
+            if (!Directory.Exists(carpetaFirma))
+            {
+                Directory.CreateDirectory(carpetaFirma);
+            }
             ArchivoImagen.Save(rutaFirma, System.Drawing.Imaging.ImageFormat.Jpeg);
             MessageBox.Show("La firma se guardo correctamente");
             this.Close();
