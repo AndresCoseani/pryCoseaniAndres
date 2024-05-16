@@ -276,11 +276,12 @@
             accederToolStripMenuItem.Name = "accederToolStripMenuItem";
             accederToolStripMenuItem.Size = new Size(62, 20);
             accederToolStripMenuItem.Text = "Acceder";
+            accederToolStripMenuItem.Click += accederToolStripMenuItem_Click;
             // 
             // juegoToolStripMenuItem
             // 
             juegoToolStripMenuItem.Name = "juegoToolStripMenuItem";
-            juegoToolStripMenuItem.Size = new Size(105, 22);
+            juegoToolStripMenuItem.Size = new Size(180, 22);
             juegoToolStripMenuItem.Text = "Juego";
             juegoToolStripMenuItem.Click += juegoToolStripMenuItem_Click;
             // 

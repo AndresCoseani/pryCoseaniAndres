@@ -18,23 +18,24 @@ namespace ProyectoCoseaniAndres
         bool espacioPresionado = false;
         PictureBox picDisparos = new PictureBox();
         int enemigosEliminados = 0;
+        PictureBox explosion = new PictureBox();
 
         public frmJuego()
         {
             InitializeComponent();
-            
+
 
         }
 
         private void frmJuego_Load(object sender, EventArgs e)
         {
-            
+
             objNave = new clsNave();
             objNave.crearJugador();
             objNave.imgNave.Location = new Point(350, 400);
             Controls.Add(objNave.imgNave);
             lblScore.Text = "Score:" + enemigosEliminados.ToString();
-            
+
         }
 
         private void frmJuego_KeyDown(object sender, KeyEventArgs e)
@@ -53,7 +54,7 @@ namespace ProyectoCoseaniAndres
             {
                 espacioPresionado = true;
 
-                // Crear un nuevo PictureBox para representar el disparo
+                // Crear un nuevo PictureBox para el disparo
                 PictureBox picDisparo = new PictureBox();
                 picDisparo.BackColor = Color.White;
                 picDisparo.Size = new Size(5, 15);
@@ -61,7 +62,7 @@ namespace ProyectoCoseaniAndres
                                                 objNave.imgNave.Location.Y);
                 Controls.Add(picDisparo);
                 listaDisparos.Add(picDisparo); // Agregar el PictureBox del disparo a la lista de disparos
-                timer1.Start(); timer2.Start();
+                GenerarEnemigos();
             }
 
         }
@@ -70,31 +71,28 @@ namespace ProyectoCoseaniAndres
         // Declarar una constante para el límite máximo de naves enemigas en pantalla
         private const int limiteNavesEnemigas = 200;
         private void GenerarEnemigos()
-        { 
-            
-        }
-        private void timer1_Tick(object sender, EventArgs e)
         {
             Random aleatorioenemigo = new Random();
             int contador = 0;
-            while (contador < 2 && cantidadNavesEnemigasEnPantalla < limiteNavesEnemigas)
+            while (contador < 10 && cantidadNavesEnemigasEnPantalla < limiteNavesEnemigas)
             {
                 clsNave objEnemigo = new clsNave();
 
                 int posX = aleatorioenemigo.Next(0, 800);
                 int posY = aleatorioenemigo.Next(0, 300);
                 // Verificar si las coordenadas están demasiado cerca de las naves existentes
-                bool demasiadoCerca = listaEnemigos.Any(enemigo =>
-                    Math.Abs(posX - enemigo.imgNaveEnemiga1.Location.X) < 100 &&
-                    Math.Abs(posY - enemigo.imgNaveEnemiga1.Location.Y) < 100 ||
-                    Math.Abs(posX - enemigo.imgNaveEnemiga2.Location.X) < 100 &&
-                    Math.Abs(posY - enemigo.imgNaveEnemiga2.Location.Y) < 100||
-                    Math.Abs(posX - enemigo.imgNaveEnemiga3.Location.X) < 100 &&
-                    Math.Abs(posY - enemigo.imgNaveEnemiga3.Location.Y) < 100);
+                bool demasiadoCerca = Controls.OfType<PictureBox>().Any(enemigo =>
+                    enemigo.Tag == "enemigo" &&
+                    Math.Abs(posX - enemigo.Location.X) < 100 &&
+                    Math.Abs(posY - enemigo.Location.Y) < 100);
 
                 // Si las coordenadas están demasiado cerca, generar nuevas coordenadas
                 if (demasiadoCerca)
+                {
+                    contador++;
                     continue;
+                }
+
 
                 int codigoenemigo = aleatorioenemigo.Next(1000, 3000);
                 switch (codigoenemigo)
@@ -126,7 +124,11 @@ namespace ProyectoCoseaniAndres
                 cantidadNavesEnemigasEnPantalla++;
                 contador++;
             }
-            timer1.Stop();
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+
         }
 
         private void frmJuego_KeyUp(object sender, KeyEventArgs e)
@@ -135,8 +137,8 @@ namespace ProyectoCoseaniAndres
             {
                 espacioPresionado = false; // Marca la tecla de espacio como no presionada
                 label1.Visible = false;
-               
-               
+
+
             }
         }
 
@@ -147,7 +149,7 @@ namespace ProyectoCoseaniAndres
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-           
+
             foreach (PictureBox picDisparo in listaDisparos.ToList())
             {
                 if (picDisparo.Location.Y > 0)
@@ -199,6 +201,8 @@ namespace ProyectoCoseaniAndres
             }
 
         }
+        
     }
+  
 }
 

@@ -36,7 +36,7 @@ namespace ProyectoCoseaniAndres
             puntosDaño = 20;
             imgNaveEnemiga1 = new PictureBox();
             imgNaveEnemiga1.SizeMode = PictureBoxSizeMode.StretchImage;
-            imgNaveEnemiga1.ImageLocation = "https://coinfasr545.weebly.com/uploads/1/2/5/7/125717591/250702395.png";
+            imgNaveEnemiga1.ImageLocation = "https://art.pixilart.com/46897995ff44.gif";
 
 
             vida = 75;
@@ -44,14 +44,14 @@ namespace ProyectoCoseaniAndres
             puntosDaño = 40;
             imgNaveEnemiga2 = new PictureBox();
             imgNaveEnemiga2.SizeMode = PictureBoxSizeMode.StretchImage;
-            imgNaveEnemiga2.ImageLocation = "https://www.laps4.com/foro/trofeos/psntrofeos/124309.PNG";
+            imgNaveEnemiga2.ImageLocation = "https://lh3.googleusercontent.com/proxy/WxMvsITMCM_7PJcCmf0pz3kquo5HwVIo0BCBQtiwDhRQD3spMuPXkkGGmf0XeS6m35hyncgOFZogJmfCU2IBY4gHPpkpyXe9dGGYyCkmTi1FsJ37criaFxNaQrO5lKYlTO8aoK_vPi60UCq-RfzaIiFqtJcOhx5yxU5IW9JFlAQqRcfW0E_X31Gc5yljLtVdfGv_n9U2ujQAMUdSUMBuaKjcgH8fiMPeKIoRJRZO9m7_OABs2JrPacA5UW4XOZGQtxq2dLy8cfPO-bjoXRq6UZ_TNHgCWPzft4nE9ilEHy0C64x74BYRcJlqaF8JqVwy2fkf44nhSIDrEMTtllvAb08e";
 
             vida = 100;
             nombre = "Nave Enemiga 3";
             puntosDaño = 60;
             imgNaveEnemiga3 = new PictureBox();
             imgNaveEnemiga3.SizeMode = PictureBoxSizeMode.StretchImage;
-            imgNaveEnemiga3.ImageLocation = "https://www.laps4.com/foro/trofeos/psntrofeos/124309.PNG";
+            imgNaveEnemiga3.ImageLocation = "https://forum.processing.org/two/uploads/imageupload/837/OIVTOMPH7AA8.gif";
 
         }
     }

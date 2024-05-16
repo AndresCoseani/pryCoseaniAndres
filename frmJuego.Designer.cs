@@ -29,16 +29,11 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            timer1 = new System.Windows.Forms.Timer(components);
             lblScore = new Label();
             label1 = new Label();
-            timer2 = new System.Windows.Forms.Timer(components);
+            tmDisparo = new System.Windows.Forms.Timer(components);
+            explosionTimer = new System.Windows.Forms.Timer(components);
             SuspendLayout();
-            // 
-            // timer1
-            // 
-            timer1.Interval = 150;
-            timer1.Tick += timer1_Tick;
             // 
             // lblScore
             // 
@@ -66,11 +61,11 @@
             label1.TextAlign = ContentAlignment.TopCenter;
             label1.Click += label1_Click;
             // 
-            // timer2
+            // tmDisparo
             // 
-            timer2.Enabled = true;
-            timer2.Interval = 20;
-            timer2.Tick += timer2_Tick;
+            tmDisparo.Enabled = true;
+            tmDisparo.Interval = 20;
+            tmDisparo.Tick += timer2_Tick;
             // 
             // frmJuego
             // 
@@ -97,6 +92,7 @@
         private System.Windows.Forms.Timer timer1;
         private Label lblScore;
         private Label label1;
-        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer tmDisparo;
+        private System.Windows.Forms.Timer explosionTimer;
     }
 }

@@ -1,3 +1,5 @@
+using pryCoseaniAndres;
+
 namespace ProyectoCoseaniAndres
 {
     public partial class frmPrincipal : Form
@@ -9,8 +11,13 @@ namespace ProyectoCoseaniAndres
 
         private void juegoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmJuego J = new frmJuego();
-            J.ShowDialog();
+            frmUsuario U = new frmUsuario();
+            U.ShowDialog();
+        }
+
+        private void accederToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
